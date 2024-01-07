@@ -31,21 +31,20 @@ public class GryffindorStudent extends HogwartsStudent {
         return ( getCourage() + getNobility() + getHonor() ) / 3 * 1000;
     }
     @Override
-    public void compareTo(HogwartsStudent other) {
-        if(this.getClass() != other.getClass()) System.out.println("Сравниваются ученики разных факультетов");
+    public boolean compareTo(HogwartsStudent other) {
+        if(this.getClass() != other.getClass()) {
+            System.out.println("Сравниваются ученики разных факультетов");
+            return false;
+        }
         GryffindorStudent obj = (GryffindorStudent) other;
 
         int thisPoint = this.getSumOfProps(this);
         int otherPoint = other.getSumOfProps(obj);
 
         if(thisPoint > otherPoint) {
-            System.out.println(this.getFullName() + " better in " + facultyName + " than " + obj.getFullName());
-        } else if(otherPoint > thisPoint) {
-            System.out.println(obj.getFullName() + " better in " + facultyName + " than " + this.getFullName());
-        } else {
-            System.out.println(obj.getFullName() + " and " + this.getFullName() + " have the same point in " + facultyName);
+            return true;
         }
-
+        return false;
     }
 
     @Override

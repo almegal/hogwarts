@@ -26,27 +26,41 @@ public class Main {
         for (HogwartsStudent hogwartsStudent : arr) {
             hogwartsStudent.makeMagic();
             hogwartsStudent.transgress();
-            System.out.println();
+            System.out.println("*************************");
         }
+        System.out.println("*************************");
+        System.out.println("*************************");
 
-        System.out.println("Сравним студентов одного факультеа");
-        harry.compareTo(ron);
-        germiona.compareTo(harry);
-        joy.compareTo(padma);
-        padma.compareTo(marcus);
+        System.out.println("Сравним студентов одного факультета и найдем лучшего");
+        GryffindorStudent[] arrGryff = {harry, ron, germiona};
+        SlytherinStudent[] arrSlyth = {draco, gregory, gregory};
+        RavenclawStudent[] arrRaven = {joy, padma, marcus};
+        HufflepuffStudent[] arrHuff = {zaharia, sedrik, justin};
+        //
+        GryffindorStudent bestG =(GryffindorStudent) ServiceHogwarts.findBestInFaculty(arrGryff);
+        ServiceHogwarts.printBestInFacylty(bestG);
 
-        System.out.println();
-        System.out.println("Найдем студентов между собой по силе магии и трангрессии: ");
-        for (int i = 0; i < arr.length - 1; i++) {
-            final HogwartsStudent studentA = arr[i];
-            final HogwartsStudent studentB = arr[i + 1];
+        SlytherinStudent bestS = (SlytherinStudent) ServiceHogwarts.findBestInFaculty(arrSlyth);
+        ServiceHogwarts.printBestInFacylty(bestS);
 
-            HogwartsStudent.compareMagicPowerBetween(studentA, studentB);
-            HogwartsStudent.compareTrangressDistanceBetween(studentA, studentB);
-            System.out.println();
-        }
+        RavenclawStudent bestR = (RavenclawStudent) ServiceHogwarts.findBestInFaculty(arrRaven);
+        ServiceHogwarts.printBestInFacylty(bestR);
 
+        HufflepuffStudent bestH = (HufflepuffStudent) ServiceHogwarts.findBestInFaculty(arrHuff);
+        ServiceHogwarts.printBestInFacylty(bestH);
 
+        System.out.println("*************************");
+        System.out.println("*************************");
+        System.out.println("*************************");
 
+        System.out.println("Найдем лучшего волшебника");
+        System.out.println("Способ №1");
+        HogwartsStudent[] bestGHRS = {bestH, bestG, bestR, bestS};
+        HogwartsStudent best = ServiceHogwarts.findBestInHogwarts(bestGHRS);
+        ServiceHogwarts.printBestInHogwarts(best);
+
+        System.out.println("Способ №2");
+        HogwartsStudent b = ServiceHogwarts.findBestInHogwarts(arr);
+        ServiceHogwarts.printBestInHogwarts(b);
     }
 }

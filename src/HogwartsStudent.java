@@ -45,31 +45,28 @@ public abstract class HogwartsStudent {
     }
     abstract public int getMagicPower();
     abstract public int getTransgressDistance();
-    abstract public void compareTo(HogwartsStudent obj);
+    abstract public boolean compareTo(HogwartsStudent obj);
 
-    public static void compareMagicPowerBetween(HogwartsStudent a, HogwartsStudent b){
+    public static HogwartsStudent compareMagicPowerBetween(HogwartsStudent a, HogwartsStudent b){
+
         int aPoint = a.getMagicPower();
         int bPoint = b.getMagicPower();
 
         if(aPoint > bPoint) {
-            System.out.println(a.getFullName() + " обладает большей силой магии чем " + b.getFullName());
-        } else if(bPoint > aPoint) {
-            System.out.println(b.getFullName() + " обладает большей силой магии чем " + a.getFullName());
-        } else {
-            System.out.println(a.getFullName() + " и " + b.getFullName() + " обладают одинаковой силой магии");
+            return a;
         }
+        return b;
     }
-    public static void compareTrangressDistanceBetween(HogwartsStudent a, HogwartsStudent b) {
+    public static HogwartsStudent compareTrangressDistanceBetween(HogwartsStudent a, HogwartsStudent b) {
         int aPoint = a.getTransgressDistance();
         int bPoint = b.getTransgressDistance();
 
         if(aPoint > bPoint) {
-            System.out.println(a.getFullName() + " трансгрессирует дальше чем " + b.getFullName());
+            return a;
         } else if(bPoint > aPoint) {
-            System.out.println(b.getFullName() + " трансгрессирует дальше чем " + a.getFullName());
-        } else {
-            System.out.println(a.getFullName() + " и " + b.getFullName() +  " трансгрессируют на одинаковое расстояние");
+            return b;
         }
+        return null;
     }
     public String toString() {
         return "Все качества: " +
