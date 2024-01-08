@@ -33,7 +33,7 @@ public abstract class ServiceHogwarts {
         HogwartsStudent best = arr[0];
 
         for (HogwartsStudent hogwartsStudent : arr) {
-            best = HogwartsStudent.compareMagicPowerBetween(best, hogwartsStudent);
+            best = best.findBetter(hogwartsStudent);
         }
         return best;
     }

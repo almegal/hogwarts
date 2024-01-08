@@ -1,64 +1,48 @@
 public class GryffindorStudent extends HogwartsStudent {
-    private final String  facultyName = String.valueOf(this.getClass()).replace("class", "");
-    public GryffindorStudent(String fullName, int nobility, int honor, int courage){
-        super(fullName, nobility, honor, courage, 0, 0, 0, 0, 0, 0, 0, 0,0 ,0, 0, 0);
-    }
-    public GryffindorStudent(String fullName,
-                             int nobility,
-                             int honor,
-                             int courage,
-                             int hardworking,
-                             int loyal,
-                             int honest,
-                             int smart,
-                             int wise,
-                             int witty,
-                             int creativity,
-                             int cunning,
-                             int determination,
-                             int ambition,
-                             int resourcefulness,
-                             int thirstForPower) {
-        super(fullName ,nobility,honor,courage,hardworking,loyal,honest,smart,wise,witty,creativity,cunning,determination, ambition,resourcefulness,thirstForPower);
+    //gryffindor props
+    private int nobility, honor, courage;
+
+    public GryffindorStudent(String fullName, int nobility, int honor, int courage, int magicPower, int transgressDistance){
+        super(fullName, magicPower, transgressDistance);
+        this.nobility = nobility;
+        this.honor = honor;
+        this.courage = courage;
     }
 
-    @Override
-    public int getMagicPower(){
-        return ( getNobility() + getCourage() + getHonor() ) / 3 * 10;
-    }
-    @Override
-    public int getTransgressDistance(){
-        return ( getCourage() + getNobility() + getHonor() ) / 3 * 1000;
-    }
     @Override
     public boolean compareTo(HogwartsStudent other) {
         if(this.getClass() != other.getClass()) {
             System.out.println("Сравниваются ученики разных факультетов");
             return false;
         }
-        GryffindorStudent obj = (GryffindorStudent) other;
 
-        int thisPoint = this.getSumOfProps(this);
-        int otherPoint = other.getSumOfProps(obj);
+        int thisPoint = this.getSumOfProps();
+        int otherPoint = other.getSumOfProps();
 
-        if(thisPoint > otherPoint) {
-            return true;
-        }
-        return false;
+        return thisPoint > otherPoint;
+    }
+
+    @Override
+    public int getSumOfProps() {
+        return nobility + honor + courage;
     }
 
     @Override
     public String toString(){
-        return "Качества " + this.getFullName() + " с учетом факультета " +
+        return super.toString() + " качества с учетом факультета " +
                 "- nobility: " + getNobility() +
                 ", honor: " + getHonor() +
-                ", courage: " + getCourage()+ "\n" +
-                super.toString();
+                ", courage: " + getCourage()+ "\n";
     }
 
     //getters
-
-    public String getFacultyName() {
-        return facultyName;
+    public int getNobility() {
+        return nobility;
+    }
+    public int getHonor() {
+        return honor;
+    }
+    public int getCourage() {
+        return courage;
     }
 }
