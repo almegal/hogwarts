@@ -33,7 +33,8 @@ public abstract class ServiceHogwarts {
         HogwartsStudent best = arr[0];
 
         for (HogwartsStudent hogwartsStudent : arr) {
-            best = best.findBetter(hogwartsStudent);
+            boolean isBest = best.compareTo(hogwartsStudent);
+            if (!isBest) best = hogwartsStudent;
         }
         return best;
     }

@@ -10,8 +10,7 @@ public class RavenclawStudent extends HogwartsStudent {
         this.creativity = creativity;
     }
 
-    @Override
-    public boolean compareTo(HogwartsStudent other) {
+    public boolean compareTo(RavenclawStudent other) {
         if(this.getClass() != other.getClass()) {
             System.out.println("Сравниваются ученики разных факультетов");
             return false;
