@@ -8,8 +8,7 @@ public class HufflepuffStudent extends HogwartsStudent {
         this.honest = honest;
     }
 
-    @Override
-    public boolean compareTo(HogwartsStudent other) {
+    public boolean compareTo(HufflepuffStudent other) {
         if(this.getClass() != other.getClass()) {
             System.out.println("Сравниваются ученики разных факультетов");
             return false;

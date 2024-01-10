@@ -10,9 +10,7 @@ public class SlytherinStudent extends HogwartsStudent {
         this.resourcefulness = resoursefulness;
         this.thirstForPower = thirstForPower;
     }
-
-    @Override
-    public boolean compareTo(HogwartsStudent other) {
+    public boolean compareTo(SlytherinStudent other) {
         if(this.getClass() != other.getClass()) {
             System.out.println("Сравниваются ученики разных факультетов");
             return false;

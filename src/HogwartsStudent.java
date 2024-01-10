@@ -8,16 +8,14 @@ public abstract class HogwartsStudent {
         this.magicPower = magicPower;
         this.transgressDistance = transgressDistance;
     }
-    abstract public boolean compareTo(HogwartsStudent obj);
-    abstract public int getSumOfProps();
-
-    public HogwartsStudent findBetter(HogwartsStudent other) {
+    public boolean compareTo(HogwartsStudent other) {
         int aPoint = this.getMagicPower() + this.getTransgressDistance();
         int bPoint = other.getMagicPower() + other.getTransgressDistance();
 
-        if(aPoint < bPoint) return other;
-        return this;
-    }
+        return aPoint > bPoint;
+    };
+    abstract public int getSumOfProps();
+
 
     public String toString() {
         return "{ " + this.fullName +
